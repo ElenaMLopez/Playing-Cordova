@@ -16,6 +16,7 @@
   <author href="#" email="">
       Hardeep Shoker
   </author>
+  <plugin name="cordova-plugin-camera" spec="403"></plugin>
 
 
 </widget>

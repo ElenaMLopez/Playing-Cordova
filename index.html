@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/own/styles.css">
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Lato:900|Saira+Extra+Condensed:600" rel="stylesheet">
+  <script src="cordova.js"></script>
 
 </head>
 <body>
@@ -70,7 +71,7 @@
 
       <!-- Section Bolo -->
       <section class="bolo">
-        <img class="bolo-image" src="images/bolo.png" alt="Wuaki offer">
+        <img id="myImage" class="bolo-image" src="images/bolo.png" alt="Wuaki offer">
       </section>
       <!-- End Section Bolo -->
       <!-- Start section calls -->
@@ -195,5 +196,20 @@
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/own.js" charset="utf-8"></script>
     <script src="js/navbar.js" charset="utf-8"></script>
+    <script>
+      document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+          console.log(navigator.camera);
+          navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
+          
+          function cameraCallback(imageData) {
+             var image = document.getElementById('myImage');
+             image.src = "data:image/jpeg;base64," + imageData;
+          };
+          function cameraError(){
+            console.error('error!: ', error)
+          }
+         }
+    </script>
   </body>
   </html>
